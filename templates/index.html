@@ -3,9 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <title>Phizzy's BlackBox V1</title>
+  <style>
+    body {
+      background: black;
+      color: lime;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 20px;
+      overflow: hidden;
+    }
+    #terminal {
+      white-space: pre-wrap;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    #overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 99;
+    }
+    #launchBtn {
+      padding: 15px 30px;
+      font-size: 18px;
+      background: lime;
+      border: none;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    audio {
+      display: none;
+    }
+  </style>
 </head>
-<body style="background-color:black; color:lime; font-family:monospace;">
-  <h2>Welcome to Phizzy's BlackBox V1</h2>
-  <p>This is the backend. Visit this project in terminal to see live hack simulation.</p>
+<body>
+
+<div id="overlay">
+  <h1 style="color:lime;">Phizzy's BlackBox V1</h1>
+  <button id="launchBtn">Launch BlackBox</button>
+</div>
+
+<pre id="terminal"></pre>
+
+<audio id="sound" src="https://cdn.pixabay.com/download/audio/2022/03/29/audio_178e0374e0.mp3?filename=cyberpunk-terminal-typing-18462.mp3" loop></audio>
+
+<script>
+  const overlay = document.getElementById("overlay");
+  const terminal = document.getElementById("terminal");
+  const btn = document.getElementById("launchBtn");
+  const sound = document.getElementById("sound");
+
+  const scriptLines = [
+    "Initializing BlackBox V1...",
+    "Linking to global relay node...",
+    "Bypassing firewalls... ▓▓▓▓▓▓░░░░░░ 59%",
+    "Injecting payload into darknet grid...",
+    "Locating target: XCore Command Node",
+    "Trace detected... deploying cloaking module...",
+    "Trace evaded. Access granted.",
+    "Decoding target credentials...",
+    " • root@cyberserver.net : hack3rM0de!",
+    " • ai_admin@cloudmatrix.ai : Phizzy2025!",
+    "Spawning visual trace flood...",
+    "Wiping logs... cloaking BlackBox...",
+    ">>> Mission complete. Disconnecting..."
+  ];
+
+  let i = 0;
+
+  function typeLine() {
+    if (i < scriptLines.length) {
+      terminal.innerHTML += scriptLines[i] + "\n";
+      i++;
+      setTimeout(typeLine, 900);
+    }
+  }
+
+  btn.onclick = () => {
+    overlay.style.display = "none";
+    sound.play();
+    typeLine();
+  };
+</script>
+
 </body>
 </html>
