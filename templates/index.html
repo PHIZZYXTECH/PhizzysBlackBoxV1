@@ -1,96 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Phizzy's BlackBox V1</title>
-  <style>
-    body {
-      background: black;
-      color: lime;
-      font-family: 'Courier New', Courier, monospace;
-      padding: 20px;
-      overflow: hidden;
-    }
-    #terminal {
-      white-space: pre-wrap;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-    #overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      z-index: 99;
-    }
-    #launchBtn {
-      padding: 15px 30px;
-      font-size: 18px;
-      background: lime;
-      border: none;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    audio {
-      display: none;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Phizzy’s BlackBox V1</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body>
+  <div class="glitch-bg"></div>
 
-<div id="overlay">
-  <h1 style="color:lime;">Phizzy's BlackBox V1</h1>
-  <button id="launchBtn">Launch BlackBox</button>
-</div>
+  <div class="main-container">
+    <h1 class="title">PHIZZY’S BLACKBOX V1</h1>
+    <button class="start-btn" onclick="launchBlackBox()">💀 LAUNCH BLACKBOX</button>
 
-<pre id="terminal"></pre>
+    <div id="terminal" class="terminal hidden">
+      <span id="typed"></span>
+    </div>
+  </div>
 
-<audio id="sound" src="https://cdn.pixabay.com/download/audio/2022/03/29/audio_178e0374e0.mp3?filename=cyberpunk-terminal-typing-18462.mp3" loop></audio>
-
-<script>
-  const overlay = document.getElementById("overlay");
-  const terminal = document.getElementById("terminal");
-  const btn = document.getElementById("launchBtn");
-  const sound = document.getElementById("sound");
-
-  const scriptLines = [
-    "Initializing BlackBox V1...",
-    "Linking to global relay node...",
-    "Bypassing firewalls... ▓▓▓▓▓▓░░░░░░ 59%",
-    "Injecting payload into darknet grid...",
-    "Locating target: XCore Command Node",
-    "Trace detected... deploying cloaking module...",
-    "Trace evaded. Access granted.",
-    "Decoding target credentials...",
-    " • root@cyberserver.net : hack3rM0de!",
-    " • ai_admin@cloudmatrix.ai : Phizzy2025!",
-    "Spawning visual trace flood...",
-    "Wiping logs... cloaking BlackBox...",
-    ">>> Mission complete. Disconnecting..."
-  ];
-
-  let i = 0;
-
-  function typeLine() {
-    if (i < scriptLines.length) {
-      terminal.innerHTML += scriptLines[i] + "\n";
-      i++;
-      setTimeout(typeLine, 900);
-    }
-  }
-
-  btn.onclick = () => {
-    overlay.style.display = "none";
-    sound.play();
-    typeLine();
-  };
-</script>
-
+  <audio id="bg-audio" src="https://cdn.pixabay.com/download/audio/2022/03/29/audio_178e0374e0.mp3?filename=cyberpunk-terminal-typing-18462.mp3" loop></audio>
+  <script src="/static/js/script.js"></script>
 </body>
 </html>
